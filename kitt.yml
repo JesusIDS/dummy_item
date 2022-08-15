@@ -1,0 +1,75 @@
+setup:
+  releaseRefs: [ "dev" ]
+  featureFlagMap:
+    updateGitStatusAlways: true
+
+profiles:
+  - springboot-web
+
+deploy:
+  changeRecord:
+    type: "auto"
+    group: "Associate Onboarding App"
+    managerGroup: "Change Managers - US"
+    affectedGEOs: [ "US" ]
+    notifyChannels: [ "mx-wcnp-optimus" ]
+  releaseType:
+    strategy: normal
+    deployTimeout: 300
+    rollbackOnError: false
+    waitForReady: true
+  namespace: "mx-sch-optimus"
+  gslb:
+    httpPortEnabled: true
+    httpsPortEnabled: true
+    enabled: true
+    lbRoutings:
+      dev:
+        cnames: [ wcnp-optimus-dws-dev.walmart.net ]
+  helm:
+    values:
+      min:
+        cpu: 250m
+        memory: 512Mi
+      max:
+        cpu: 500m
+        memory: 1024Mi
+      scaling:
+        cpuPercent: 5
+      livenessProbe:
+        enabled: "true"
+        headers: application/json, text/plain, text/html, application/vnd.spring-boot.actuator.v2+json
+        wait: 150
+        timeout: 5
+        path: "/health"
+      readinessProbe:
+        enabled: "true"
+        headers: application/json, text/plain, text/html, application/vnd.spring-boot.actuator.v2+json
+        probeInterval: 5
+        wait: 150
+        path: "/health"
+        port: 8080
+        failureThreshold: 3
+        timeout: 5
+      networking:
+        externalPort: "8080"
+        internalPort: "8080"
+
+  stages:
+    - name: dev
+      refs: [ "dev" ]
+      events: [ onPush ]
+      target:
+        cluster_id: [ "scus-dev-a5" ]
+      helm:
+        values:
+          scaling:
+            min: 1
+            max: 1
+            enable: "true"
+owner:
+  group: "MX-SCH-Optimus"
+
+notify:
+  slack:
+    channelName: "mx-wcnp-optimus"
