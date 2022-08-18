@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.walmart.mx.dws.api.clients.testclient.TestPeopleClient;
-import com.walmart.mx.dws.api.clients.testclient.TestTextClient;
-import com.walmart.mx.dws.api.clients.testclient.models.People;
+//import com.walmart.mx.dws.api.clients.testclient.TestPeopleClient;
+//import com.walmart.mx.dws.api.clients.testclient.TestTextClient;
+//import com.walmart.mx.dws.api.clients.testclient.models.People;
 import com.walmart.mx.dws.api.clients.testclient.models.Text;
 
 import lombok.RequiredArgsConstructor;
@@ -23,18 +23,18 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 public class PeopleContoller {
-     private final TestPeopleClient testClient;
-     private final TestTextClient txtClient;
+//     private final TestPeopleClient testClient;
+//     private final TestTextClient txtClient;
 
      @Value("${backhaul.app.version}")
      private String version;
 
 
-    @GetMapping("/people")
-    public ResponseEntity<List<People>> getPeople() {
-       
-        return new ResponseEntity<>(testClient.fetchPeople(), HttpStatus.OK);
-    }
+//    @GetMapping("/people")
+//    public ResponseEntity<List<People>> getPeople() {
+//       
+//        return new ResponseEntity<>(testClient.fetchPeople(), HttpStatus.OK);
+//    }
 
 
     @GetMapping("/holaMundo")
@@ -48,15 +48,15 @@ public class PeopleContoller {
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG,
                 locale);
         String formattedDate = dateFormat.format(new Date());
-        String mensaje = "Welcome, prueba demo de health check. Backhaul Comunes: Ver " + " "+version;
+        String mensaje = "Welcome, prueba demo de health check. DWS: Ver " + " "+version;
         return new ResponseEntity<>(mensaje + " "+formattedDate, HttpStatus.OK);
 
     }
 
-    @PostMapping("/text")
-    public ResponseEntity<Text> changeText(@RequestBody String text) {
-       
-        return new ResponseEntity<>(txtClient.changeText(text), HttpStatus.OK);
-    }
+//    @PostMapping("/text")
+//    public ResponseEntity<Text> changeText(@RequestBody String text) {
+//       
+//        return new ResponseEntity<>(txtClient.changeText(text), HttpStatus.OK);
+//    }
 
 }

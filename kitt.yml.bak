@@ -12,7 +12,7 @@ deploy:
     group: "Associate Onboarding App"
     managerGroup: "Change Managers - US"
     affectedGEOs: [ "US" ]
-    notifyChannels: [ "MX - SCH - Marketplace Backhaul" ]
+    notifyChannels: [ "mx-wcnp-optimus" ]
   releaseType:
     strategy: normal
     deployTimeout: 300
@@ -75,7 +75,7 @@ deploy:
               - destination: /bootstrap.properties
                 content: /dws/dev#config        
 owner:
-  group: "MX - SCH - Marketplace Backhaul"
+  group: "MX-SCH-Optimus"
 
 notify:
   slack:
