@@ -43,12 +43,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- Starter for using Spring Data JPA with Hibernate -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-
 		<!-- Spring Boot Developer Tools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -64,32 +58,9 @@
             <scope>test</scope>
 		</dependency>
 		
-		<!-- Starter for building WebFlux applications using Spring Framework's Reactive Web support -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webflux</artifactId>
-		</dependency>
-		
-		<!-- Microsoft JDBC Driver for SQL Server. -->
-		<dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>mssql-jdbc</artifactId>
-            <scope>runtime</scope>
-		</dependency>
-		
-		<!-- Microsoft Authentication Library for Java gives you the ability to obtain tokens from Azure AD v2 and Azure AD B2C, 
-		gaining access to Microsoft Cloud API and any other API secured by Microsoft identities -->
-		<dependency>
-			<groupId>com.microsoft.azure</groupId>
-			<artifactId>msal4j</artifactId>
-			<version>1.11.2</version>
-		</dependency>
-		
-		<!-- Azure active directory library for Java add Windows Azure Active Directory authentication. -->
-		<dependency>
-			<groupId>com.microsoft.azure</groupId>
-			<artifactId>adal4j</artifactId>
-			<version>1.6.4</version>
+  			<groupId>com.fasterxml.jackson.dataformat</groupId>
+  			<artifactId>jackson-dataformat-xml</artifactId>
 		</dependency>
 		
 		<!-- Automatic Resource Management, automatic generation of getters, setters, equals, hashCode and toString -->
