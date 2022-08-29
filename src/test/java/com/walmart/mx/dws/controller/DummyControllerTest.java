@@ -33,6 +33,8 @@ class DummyControllerTest {
 
     private Items items;
 
+    private ResponseForm responseForm;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -55,6 +57,9 @@ class DummyControllerTest {
         item.setAttrs(attrList);
         items.setItem(item);
 
+        responseForm = new ResponseForm();
+        responseForm.setStatus("Status OK");
+
     }
 
     @Test
@@ -74,6 +79,7 @@ class DummyControllerTest {
         assertNotNull(responseEntity);
         assertNotNull(responseEntity.getBody());
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals(responseForm.getStatus(), responseEntity.getBody().getStatus());
     }
 
 }
