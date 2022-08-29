@@ -39,6 +39,7 @@ public class DummyController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content) })
     @GetMapping(value = "/item/{id}", produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<Items> get(@PathVariable final Long id) {
+
         System.out.println(item.getExample().toString());
         return ResponseEntity.ok().body(item.getExample());
     }
@@ -53,6 +54,7 @@ public class DummyController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content) })
     @PostMapping(value = "/item/{id}", produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<?> post(@PathVariable final Long id, @RequestBody final RequestForm form) {
+
         final ResponseForm response = new ResponseForm();
         response.setStatus("Status OK");
         return ResponseEntity.ok().body(response);
