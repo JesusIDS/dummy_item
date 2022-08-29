@@ -2,7 +2,6 @@ package com.walmart.mx.dws.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +18,8 @@ import com.walmart.mx.dws.bean.ItemCreate;
 import com.walmart.mx.dws.controller.forms.Attr;
 import com.walmart.mx.dws.controller.forms.Item;
 import com.walmart.mx.dws.controller.forms.Items;
+import com.walmart.mx.dws.controller.forms.RequestForm;
+import com.walmart.mx.dws.controller.forms.ResponseForm;
 
 import static org.mockito.Mockito.when;
 
@@ -64,11 +65,15 @@ class DummyControllerTest {
         assertNotNull(responseEntity.getBody());
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(items.getItem().getAttrs().get(0).getName(), responseEntity.getBody().getItem().getAttrs().get(0).getName());
+        assertEquals(items.getItem().getAttrs().get(0).getValue(), responseEntity.getBody().getItem().getAttrs().get(0).getValue());
     }
 
     @Test
     void testPost() {
-        fail("Not yet implemented");
+        final ResponseEntity<ResponseForm> responseEntity = dummyController.post(23424l, new RequestForm());
+        assertNotNull(responseEntity);
+        assertNotNull(responseEntity.getBody());
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 
 }

@@ -53,7 +53,7 @@ public class DummyController {
             @ApiResponse(responseCode = "405", description = "Method Not Allowed", content = @Content),
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content) })
     @PostMapping(value = "/item/{id}", produces = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<?> post(@PathVariable final Long id, @RequestBody final RequestForm form) {
+    public ResponseEntity<ResponseForm> post(@PathVariable final Long id, @RequestBody final RequestForm form) {
 
         final ResponseForm response = new ResponseForm();
         response.setStatus("Status OK");
